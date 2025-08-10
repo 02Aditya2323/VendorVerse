@@ -1,3 +1,4 @@
+const e = require("express");
 const Product=require("../models/Product");
 const User=require("../models/User");
 
@@ -19,7 +20,6 @@ const getProducts=async(req,res)=>{
     }
 }
 
-
 const getProductById=async(req,res)=>{
     try{
         const productId=req.params.id;
@@ -28,7 +28,7 @@ const getProductById=async(req,res)=>{
         if(!userId)return res.json({message:"Invalid User"})
         if(!productId) return res.json ({message:"Product is already sold or doesn't exists"}).status(400);
 
-        const products=await Product.findById({_id:productId})
+        const products=await Product.findById(productId)
         return res.json ({product:products,}).status(200);
     }
     catch(err){
@@ -134,6 +134,7 @@ const deleteProduct=async(req,res)=>{
 
     }
     catch(err){
+        console.log("Error in code for deleting this product")
         console.log("Error in deleting the product",err);
         return res.json({message:"Internal Server Error"}).status(500)
     }

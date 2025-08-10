@@ -207,10 +207,7 @@ const delteExistingGroup =async(req,res)=>{ // restricted to only the user who h
         
     }
 
-        // flaws: 1)didn't implemented authcheck. i.e. the user that has created can only delete this grp.
-        //         2) error in delteExistingGroup fn.
-        //          3) didn't implemented-> if grp. is already claimed then it can't be deleted
-}
+    }
 
 
 
